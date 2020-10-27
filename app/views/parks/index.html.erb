@@ -1,0 +1,15 @@
+<h2><%= "#{@parsed['total']} Total National Parks in #{params['state']}" %></h2>
+<% @parsed['data'].each do |park|%>
+<p>
+  <b>Park Name:</b> <br>
+  <%= park['fullName'] %> <br>
+  <b>Description:</b><br>
+  <%= park['description'] %> <br>
+  <b> Directions:</b> <br>
+  <%= park['directionsInfo'] %> <br>
+  <b>Hours of Operation:</b><br>
+  <% park['operatingHours'].first['standardHours'].to_a.each do |day, time| %>
+    <%= day.capitalize + ": " + time %> <br>
+  <% end %>
+</p>
+<% end %>
